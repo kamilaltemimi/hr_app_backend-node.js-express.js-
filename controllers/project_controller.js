@@ -7,7 +7,7 @@ exports.getAllProjects = (req, res) => {
             if (err) {
                 throw err
             } else {
-                res.send(results)
+                res.status(200).json({message: 'Projects fetched', result})
             }
         }
     )
@@ -21,7 +21,7 @@ exports.getProjectById = (req, res) => {
             if (err) {
                 throw err
             } else {
-                res.send(result)
+                res.status(200).json({message: `Project with ID:${id} fetched`, result})
             }
         }
     )
@@ -35,7 +35,7 @@ exports.addProject = (req, res) => {
             if (err) {
                 throw err
             } else {
-                res.send('Project added successfully')
+                res.status(200).json({ message: 'Project added successfully', result})
             }
         }
     )
@@ -50,7 +50,7 @@ exports.updateProject = (req, res) => {
             if (err) {
                 throw err
             } else {
-                res.send('Project updated successfully')
+                res.status(200).json({ message: `Project with ID:${id} updated successfully`})
             }
         }
     )
@@ -64,7 +64,7 @@ exports.deactivateProject = (req, res) => {
             if (err) {
                 throw err
             } else {
-                res.send('Project inactive')
+                res.status(200).json({ message: `Project with ID:${id} is now inactive`, result})
             }
         }
     )
