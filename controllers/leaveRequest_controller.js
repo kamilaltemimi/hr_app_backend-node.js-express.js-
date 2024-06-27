@@ -5,7 +5,7 @@ exports.getAllLeaveRequests = (req, res) => {
         if (err) {
             throw err
         } else {
-            res.status(200).json({ message: 'Leave requests fetched', result });
+            res.send(result);
         }
     })
 }
@@ -18,7 +18,7 @@ exports.getLeaveRequestById = (req, res) => {
         if (err) {
             throw err
         } else {
-            res.status(200).json({ message: `Leave request with ID:${id} fetched`, result });
+            res.send(result[0]);
         }
     })
 }
@@ -35,34 +35,21 @@ exports.addLeaveRequest = (req, res) => {
       if (err) {
         return res.status(500).send(err.message);
       } else {
-        res.status(200).json({ message: 'Leave request added', result });
-      }
+        res.send(result);
+    }
     });
   };
 
 exports.updateLeaveRequest = (req, res) => {
     const id = req.params.id
-    const { Employee_ID, Absence_Reason, Start_Date, End_Date, Comment, Status } = req.body
-    database.execute(
-        'UPDATE LeaveRequest SET Employee_ID = ?, Absence_Reason = ?, Start_Date = ?, End_Date = ?, Comment = ?, Status = ? WHERE ID = ?',
-        [ Employee_ID, Absence_Reason, Start_Date, End_Date, Comment, Status, id ], (err, result) => {
-        if (err) {
-            throw err
-        } else {
-            res.status(200).json({ message: `Leave request with ID:${id} updated`, result })
-        }
-    })
-}
-
-exports.cancelLeaveRequest = (req, res) => {
-    const id = req.params.id
+    const { Status } = req.body
     database.execute(
         'UPDATE Leave_Request SET Status = ? WHERE ID = ?',
-        [ 'Canceled', id], (err, result) => {
+        [Status, id], (err, result) => {
             if (err) {
-                throw error
+                throw err
             } else {
-                res.status(200).json({ message: `Leave request with ID:${id} canceled`, result })
+                res.send(result);
             }
         }
     )

@@ -6,7 +6,7 @@ exports.getAllEmployees = (req, res) => {
         if (err) {
             throw err
         } else {
-            res.status(200).json({ message: 'Employees fetched', result})
+            res.send(result);
         }
     })
 }
@@ -19,7 +19,7 @@ exports.getEmployeeById = (req, res, next) => {
         if (err) {
             throw err
         } else {
-            res.status(200).json({ message: `Employee with ID ${id} fetched`, result})
+            res.json(result[0]);
         }
     })
 }
@@ -31,7 +31,7 @@ exports.getEmployeesBySubdivision = (req, res) => {
         if (err) {
             throw err
         } else {
-            res.status(200).json({ message: 'Employee fetched', result })
+            res.send(result);
         }
     })
 }
@@ -44,7 +44,7 @@ exports.addEmployee = (req, res) => {
         if (err) {
             throw err
         } else {
-            res.status(200).json('Employee added', result)
+            res.send(result);
         }
     })
 };
@@ -59,7 +59,7 @@ exports.updateEmployee = (req, res) => {
             if (err) {
                 return res.status(500).send('Error updating employee');
             } else {
-                res.status(200).json({ message: `Employee with ID:${id} updated`, result });
+                res.send(result);
             }
         }
     )
@@ -73,7 +73,7 @@ exports.activateEmployee = (req, res) => {
             if (err) {
                 throw err
             } else {
-                res.status(200).json({ message: `Employee with ID:${id} activated`, result })
+                res.send(result);
             }
         }
     )
@@ -87,7 +87,7 @@ exports.deactivateEmployee = (req, res) => {
         if (err) {
             return res.status(500).send('Error deactivating employee')
         } else {
-            res.status(200).json({ message: `Employee with ID:${id} deactivated`, result })
+            res.send(result);
         }
         }
     );

@@ -7,7 +7,7 @@ exports.getAllApprovalRequests = (req, res) => {
         if (err) {
             throw err
         } else {
-            res.status(200).json({ message: 'Approval requests fetched', result});
+            res.send(result);
         };
     };
 };
@@ -20,7 +20,7 @@ exports.getApprovalRequestById = (req, res) => {
             if (err) {
                 throw err
             } else {
-                res.status(200).json({ message: `Approval request ID:${id} fetched`, result});
+                res.send(result[0]);
             };
         }
     );
@@ -34,7 +34,7 @@ exports.addApprovalRequest = (req, res) => {
             if (err) {
                 throw err
             } else {
-                res.status(200).json({ message: 'Approval request added', result});
+                res.send(result);
             };
         }
     );
@@ -49,7 +49,7 @@ exports.updateApprovalRequest = (req, res) => {
             if (err) {
                 throw err
             } else {
-                res.status(200).json({ message: 'Approval request updated', result});
+                res.send(result);
             };
         }
     );
@@ -63,7 +63,7 @@ exports.approveRequest = (req, res) => {
             if (err) {
                 throw err
             } else {
-                res.status(200).json({ message: 'Approval request approved sucessfully', result});
+                res.send(result);
             };
         }
     );
@@ -78,7 +78,7 @@ exports.rejectRequest = (req, res) => {
             if (err) {
                 throw err
             } else {
-                res.status(200).json({ message: 'Approval request rejected successfully', result});
+                res.send(result);
             };
         }
     );

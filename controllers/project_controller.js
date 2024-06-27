@@ -3,11 +3,11 @@ const database = require('../database')
 exports.getAllProjects = (req, res) => {
     database.execute(
         'SELECT * FROM Project',
-        (err, results) => {
+        (err, result) => {
             if (err) {
                 throw err
             } else {
-                res.status(200).json({message: 'Projects fetched', result})
+                res.send(result);
             }
         }
     )
@@ -21,7 +21,7 @@ exports.getProjectById = (req, res) => {
             if (err) {
                 throw err
             } else {
-                res.status(200).json({message: `Project with ID:${id} fetched`, result})
+                res.send(result[0]);
             }
         }
     )
@@ -35,7 +35,7 @@ exports.addProject = (req, res) => {
             if (err) {
                 throw err
             } else {
-                res.status(200).json({ message: 'Project added successfully', result})
+                res.send(result);
             }
         }
     )
@@ -50,7 +50,7 @@ exports.updateProject = (req, res) => {
             if (err) {
                 throw err
             } else {
-                res.status(200).json({ message: `Project with ID:${id} updated successfully`})
+                res.send(result);
             }
         }
     )
@@ -64,7 +64,7 @@ exports.deactivateProject = (req, res) => {
             if (err) {
                 throw err
             } else {
-                res.status(200).json({ message: `Project with ID:${id} is now inactive`, result})
+                res.send(result);
             }
         }
     )
