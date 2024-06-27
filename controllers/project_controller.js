@@ -28,10 +28,10 @@ exports.getProjectById = (req, res) => {
 }
 
 exports.addProject = (req, res) => {
-    const { projectType, startDate, endDate, projectManagerId, comment, status } = req.body
+    const { Project_Type, Start_Date, End_Date, Project_Manager, Comment, Status } = req.body
     database.execute(
         'INSERT INTO Project (Project_Type, Start_Date, End_Date, Project_Manager, Comment, Status) VALUES (?, ?, ?, ?, ?, ?)',
-        [ projectType, startDate, endDate, projectManagerId, comment, status ], (err, result) => {
+        [ Project_Type, Start_Date, End_Date, Project_Manager, Comment, Status ], (err, result) => {
             if (err) {
                 throw err
             } else {
@@ -43,10 +43,10 @@ exports.addProject = (req, res) => {
 
 exports.updateProject = (req, res) => {
     const id = req.params
-    const { projectType, startDate, endDate, projectManagerId, comment, status } = req.body
+    const { Project_Type, Start_Date, End_Date, Project_Manager, Comment, Status, ID } = req.body
     database.execute(
         'UPDATE Project SET Project_Type = ?, Start_Date = ?, End_Date = ?, Project_Manager = ?, Comment = ?, Status = ? WHERE ID = ?',
-        [ projectType, startDate, endDate, projectManagerId, comment, status, id ], (err, result) => {
+        [ Project_Type, Start_Date, End_Date, Project_Manager, Comment, Status, ID ], (err, result) => {
             if (err) {
                 throw err
             } else {
