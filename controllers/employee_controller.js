@@ -37,10 +37,10 @@ exports.getEmployeesBySubdivision = (req, res) => {
 }
 
 exports.addEmployee = (req, res) => {
-    const { fullName, subdivision, position, status, peoplePartner, outOfOfficeBalance } = req.body;
+    const { Full_Name, Subdivision, Position, Status, People_Partner, Out_of_Office_Balance } = req.body;
     database.execute(
         'INSERT INTO Employee (Full_Name, Subdivision, Position, Status, People_Partner, Out_Of_Office_Balance) VALUES (?, ?, ?, ?, ?, ?)', 
-        [fullName, subdivision, position, status, peoplePartner, outOfOfficeBalance], (err, result) => {
+        [Full_Name, Subdivision, Position, Status, People_Partner, Out_of_Office_Balance], (err, result) => {
         if (err) {
             throw err
         } else {

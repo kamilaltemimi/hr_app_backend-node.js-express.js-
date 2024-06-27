@@ -11,12 +11,10 @@ app.use(cors({
 app.use(bodyParser.json())
 
 const employeeRoutes = require('./routes/employee_routes')
-const approvalRequestRoutes = require('./routes/approvalRequest_routes')
 const leaveRequestRoutes = require('./routes/leaveRequest_routes')
 const projectRoutes = require('./routes/project_routes')
 
 app.use('/employee', employeeRoutes)
-app.use('/approval-requests', approvalRequestRoutes)
 app.use('/leave-requests', leaveRequestRoutes)
 app.use('/project', projectRoutes)
 
